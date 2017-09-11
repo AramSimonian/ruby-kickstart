@@ -21,6 +21,27 @@
 # f.to_f               # => 0.5
 
 class Fraction
+  attr_accessor 'numerator', 'denominator'
+  
+  def initialize(numerator, denominator)
+    @numerator = numerator
+    @denominator = denominator
+  end
+  
+  def to_f
+    self.numerator/self.denominator.to_f
+  end
+  
+  def lowest
+    greatest_common_denom = gcd(self.numerator, self.denominator)
+    
+    Fraction.new self.numerator/greatest_common_denom, self.denominator/greatest_common_denom
+  end
+  
+  def to_s
+    "#{self.numerator}/#{self.denominator}"
+  end
+  
   def gcd(a,b)
     return a if b == 0
     gcd(b, a%b)
