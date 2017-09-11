@@ -8,3 +8,16 @@
 # alternate_words("Lorem ipsum dolor sit amet.")  # => ["Lorem", "dolor", "amet"]
 # alternate_words("Can't we all get along?")      # => ["Can't", "all", "along"]
 # alternate_words("Elementary, my dear Watson!")  # => ["Elementary", "dear"]
+
+def alternate_words sentence
+  to_return = []
+  
+  output = mod_sentence.chars.select{ |x| x =~ /[a-zA-Z '’0-9]/ }.join.split
+  
+  output.each.with_index do |word, index|
+    to_return << word if index.even?
+  end
+  to_return
+end
+
+
