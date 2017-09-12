@@ -1,10 +1,14 @@
-# Given a nonnegative integer, return a hash whose keys are all the odd nonnegative integers up to it
-# and each key's value is an array containing all the even non negative integers up to it.
-#
-# Examples:
-# staircase 1  # => {1 => []}
-# staircase 2  # => {1 => []}
-# staircase 3  # => {1 => [], 3 => [2]}
-# staircase 4  # => {1 => [], 3 => [2]}
-# staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
+def staircase(top_step)
+  output = {}
+  
+  1.upto(top_step) do | val |
+    output[val] = get_evens(val) if (val).odd?
+  end
+  output
+end
 
+def get_evens(odd_num)
+  output = []
+  (odd_num-1).downto(1) { |o| output << o if o.even? }
+  output.sort
+end
