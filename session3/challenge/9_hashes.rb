@@ -29,4 +29,15 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  
+  all_items = {}
+  (a + b).uniq.each { |item| all_items[item] = [nil, nil] }
+  
+  a.uniq.each { |item| all_items[item][0] = true }
+  b.uniq.each { |item| all_items[item][1] = true }
+  
+  common_items = []
+  all_items.each_pair { |k, v| common_items << k if v[0] && v[1]}
+  
+  return all_items, common_items
 end
